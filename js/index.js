@@ -45,7 +45,7 @@ const nichos = [
         }
     },
     { 
-        cat: 'beleza', nome: 'Spa & Wellness', img: 'https://images.unsplash.com/photo-1544161515-4af6b1d86b59', link: '#',
+        cat: 'beleza', nome: 'Spa & Wellness', img: 'imagens/spabelezawellness.png', link: 'https://www.facebook.com/p/Sua-Beleza-Wellness-Spa-100076929397849/',
         detalhes: {
             titulo: 'Minha Atração de Clientes de Elite',
             marketing: 'Produzi vídeos institucionais de alta sofisticação para atrair o público wellness de alto padrão.',
