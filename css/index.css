@@ -6,12 +6,28 @@
     --white: #ffffff;
 }
 
+/* Configurações Globais */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', sans-serif; background: var(--white); color: var(--text-color); line-height: 1.6; scroll-behavior: smooth; }
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background: var(--white); 
+    color: var(--text-color); 
+    line-height: 1.6; 
+    scroll-behavior: smooth; 
+    overflow-x: hidden; /* Impede o scroll horizontal indesejado */
+}
 
 /* --- HEADER E MENU --- */
 header { background: var(--white); border-bottom: 1px solid var(--nude-light); position: sticky; top: 0; z-index: 1000; }
-.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; height: 70px; }
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 5%; 
+    height: 70px; 
+    max-width: 1400px; /* Limita a largura do cabeçalho */
+    margin: 0 auto; 
+}
 
 .brand { display: flex; align-items: center; gap: 8px; flex: 0 1 auto; }
 .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--nude-dark); }
@@ -38,7 +54,15 @@ nav a { text-decoration: none; color: var(--text-color); font-weight: 600; font-
 nav.active { max-height: 300px; border-bottom: 1px solid var(--nude-light); }
 
 /* --- HERO --- */
-.hero { display: flex; align-items: center; padding: 80px 5%; background: var(--nude-light); gap: 40px; }
+.hero { 
+    display: flex; 
+    align-items: center; 
+    padding: 80px 5%; 
+    background: var(--nude-light); 
+    gap: 40px; 
+    justify-content: center; /* Centraliza o conteúdo do hero */
+}
+.hero-text { max-width: 600px; }
 .hero-text h1 { font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--nude-dark); margin-bottom: 20px; }
 .hero-text span { font-style: italic; font-weight: 300; }
 .hero-image img { width: 400px; height: 500px; object-fit: cover; border-radius: 20px; box-shadow: 20px 20px 0 var(--blush); }
@@ -57,18 +81,38 @@ nav.active { max-height: 300px; border-bottom: 1px solid var(--nude-light); }
 .cv-footer-strategic a { color: var(--nude-dark); text-decoration: none; }
 .btn-close { background: none; border: none; font-size: 2.8rem; color: var(--nude-dark); cursor: pointer; line-height: 0.8; transition: transform 0.3s; }
 
-/* --- PORTFÓLIO E CÍRCULOS --- */
-.portfolio-container { padding: 80px 5%; text-align: center; }
+/* --- PORTFÓLIO E CÍRCULOS (CORREÇÃO DE MARGEM) --- */
+.portfolio-container { 
+    padding: 60px 5%; 
+    text-align: center; 
+    max-width: 1200px; /* Garante que o conteúdo não espalhe demais em telas 4K */
+    margin: 0 auto; 
+}
 .section-title { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 40px; }
-.masonry-grid { display: grid; gap: 30px; margin-bottom: 40px; grid-template-columns: repeat(1, 1fr); }
-@media (min-width: 600px) { .masonry-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1025px) { .masonry-grid { grid-template-columns: repeat(6, 1fr); } }
 
-.item-nicho { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center; }
+.masonry-grid { 
+    display: grid; 
+    gap: 30px; 
+    margin: 0 auto 40px auto; 
+    grid-template-columns: repeat(1, 1fr); 
+    width: 100%;
+}
+
+/* Tablet e iPads: 3 por fileira */
+@media (min-width: 600px) and (max-width: 1024px) {
+    .masonry-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop: 4 por fileira (Para evitar perda de margem) */
+@media (min-width: 1025px) {
+    .masonry-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.item-nicho { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; text-align: center; width: 100%; }
 .circle-container { 
     width: 160px; height: 160px; border-radius: 50%; overflow: hidden; 
     border: 3px solid var(--nude-dark); margin-bottom: 15px; transition: 0.4s; 
-    display: block; /* Garante que o link ocupe a área do círculo */
+    display: block; 
 }
 .circle-container img { width: 100%; height: 100%; object-fit: cover; }
 .item-nicho:hover .circle-container { transform: scale(1.05); }
@@ -77,12 +121,17 @@ nav.active { max-height: 300px; border-bottom: 1px solid var(--nude-light); }
 .nicho-label-cat { display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--nude-dark); font-weight: 600; letter-spacing: 1.5px; }
 .nicho-company-name { display: block; font-size: 1.05rem; color: var(--text-color); text-decoration: none; margin-bottom: 10px; }
 
-/* Cortina de Detalhes */
+/* --- Cortina de Detalhes --- */
 .details-curtain { grid-column: 1 / -1; max-height: 0; overflow: hidden; transition: all 0.5s ease-in-out; background: var(--nude-light); border-radius: 15px; opacity: 0; width: 100%; }
 .details-curtain.active { max-height: 1000px; opacity: 1; margin: 20px 0; padding: 30px; border: 1px solid var(--nude-dark); }
 .details-content { text-align: left; }
 .details-content h4 { font-family: 'Playfair Display'; color: var(--nude-dark); margin-bottom: 15px; font-size: 1.4rem; }
-.details-content ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.details-content ul { 
+    list-style: none; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Melhora a quebra de texto nos detalhes */
+    gap: 15px; 
+}
 .details-content li { font-size: 0.85rem; margin-bottom: 8px; }
 .details-content strong { color: var(--nude-dark); text-transform: uppercase; font-size: 0.75rem; display: block; margin-bottom: 2px; }
 
@@ -102,22 +151,24 @@ nav.active { max-height: 300px; border-bottom: 1px solid var(--nude-light); }
 input, select, textarea { width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 8px; background: #fafafa; font-family: 'Poppins'; outline: none; }
 .btn-submit { background: var(--nude-dark); color: white; border: none; padding: 18px 40px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
 
+/* --- RESPONSIVIDADE --- */
 @media (max-width: 1024px) {
     .menu-toggle { display: block; margin-left: auto; }
-    .hero { flex-direction: column; text-align: center; }
+    .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
     .hero-text h1 { font-size: 2.2rem; }
-    .hero-image img { width: 100%; height: auto; }
+    .hero-image img { width: 100%; height: auto; max-width: 400px; }
     .input-group { flex-direction: column; }
 }
 @media (min-width: 1025px) { nav { max-height: none; border: none; flex: 2; display: block; } }
 
+/* --- FOOTER E CTA --- */
 .cta-wrapper { display: flex; justify-content: center; padding: 20px 0; background-color: var(--white); }
 .main-footer { padding: 40px 0; background-color: var(--white); border-top: 1px solid var(--nude-light); display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .footer-socials { display: flex; gap: 25px; }
 .footer-socials a { color: var(--nude-dark); font-size: 1.5rem; text-decoration: none; }
 .footer-copy { font-size: 0.8rem; color: var(--text-color); opacity: 0.7; }
 
-/* Estilo do Botão Flutuante do WhatsApp com Efeito de Pulsação */
+/* --- WHATSAPP FLUTUANTE --- */
 .whatsapp-float {
     position: fixed;
     width: 60px;
@@ -129,41 +180,28 @@ input, select, textarea { width: 100%; padding: 15px; border: 1px solid #eee; bo
     border-radius: 50px;
     text-align: center;
     font-size: 35px;
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Sombra inicial para a animação */
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     transition: all 0.3s ease;
-    
-    /* Gatilho da animação: dura 2 segundos e repete para sempre */
     animation: pulse-whatsapp 2s infinite;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
     background-color: #128c7e;
-    animation: none; /* Para de pulsar quando o mouse está em cima */
+    animation: none;
 }
 
-/* Regra da Animação de Pulsação */
 @keyframes pulse-whatsapp {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-    }
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-    }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
-/* Ajuste para Celulares */
 @media (max-width: 768px) {
     .whatsapp-float {
         width: 50px;
