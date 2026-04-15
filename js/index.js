@@ -74,7 +74,12 @@ const btnLess = document.getElementById('btn-less');
 let filterActive = 'all';
 let isShowingAll = false;
 
-function getInitialLimit() { return window.innerWidth <= 1024 ? 3 : 6; }
+// Ajuste para 4 no desktop e 3 no tablet
+function getInitialLimit() { 
+    if (window.innerWidth >= 1025) return 4; 
+    if (window.innerWidth >= 600) return 3;
+    return 3;
+}
 
 function render(showAll = isShowingAll) {
     if (!grid) return;
@@ -108,6 +113,7 @@ function render(showAll = isShowingAll) {
         </div>
     `).join('');
 
+    // Lógica para o botão ressurgir
     if (btnLoad) btnLoad.style.display = (!isShowingAll && filtered.length > getInitialLimit()) ? 'inline-block' : 'none';
     if (btnLess) btnLess.style.display = (isShowingAll && filtered.length > getInitialLimit()) ? 'inline-block' : 'none';
 }
@@ -122,7 +128,6 @@ window.toggleDetails = function(e, index) {
     }
 };
 
-// Listeners e funções de controle (Originais Mantidas)
 document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         document.querySelector('.filter-btn.active').classList.remove('active');
@@ -160,4 +165,5 @@ if (btnSobre) btnSobre.addEventListener('click', () => toggleSobre(true));
 if (linkSobre) linkSobre.addEventListener('click', (e) => { e.preventDefault(); toggleSobre(true); });
 if (btnFechar) btnFechar.addEventListener('click', () => toggleSobre(false));
 
+window.addEventListener('resize', () => render());
 render();
