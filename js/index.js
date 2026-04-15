@@ -7,7 +7,7 @@ const nichos = [
             marketing: 'Desenvolvi narrativas visuais focadas na experiência do cliente, elevando a percepção de exclusividade da marca.',
             seo: 'Realizei a otimização On-Page completa do site para termos de alta intenção como "spa de luxo SP".',
             ads: 'Gerenciei campanhas de Google Ads com segmentação ultra-localizada para atingir o público premium.',
-            valorizacao: 'Reforcei o posicionamento de elite através de curadoria tática com influenciadores do mercado de luxo.',
+            valorizacao: 'Reforcei o posicionamento de elite na Barra da Tijuca e Zona Sul do Rio de Janeiro através de curadoria tática com influenciadores do mercado de luxo.',
             leads: 'Implementei CTAs estratégicos que resultaram em um aumento de 40% nos agendamentos online.'
         }
     },
